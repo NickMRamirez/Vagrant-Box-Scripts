@@ -36,6 +36,9 @@ reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogo
 ECHO Run gpupdate.exe...
 gpupdate
 
+ECHO Enable remote desktop
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
 ECHO Set powershell execution script to unrestricted...
 powershell -Command Set-ExecutionPolicy Unrestricted
 
@@ -58,6 +61,4 @@ start /b winrm set winrm/config/service/auth @{Basic="true"}
 ECHO WinRM Service auto start...
 sc config WinRM start= auto
 
-ECHO Restart the computer...
-start /b shutdown /r /f /t 0
 

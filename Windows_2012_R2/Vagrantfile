@@ -8,8 +8,8 @@ Vagrant.configure(2) do |config|
   config.vm.guest = :windows
   config.vm.boot_timeout = 30
   config.vm.network "forwarded_port", host: 33389, guest: 3389
-  #config.vm.provider "virtualbox" do |v|
-  #  v.gui = true
-  #end
+  config.vm.provider "virtualbox" do |v|
+    v.gui = true
+  end
 
 end
