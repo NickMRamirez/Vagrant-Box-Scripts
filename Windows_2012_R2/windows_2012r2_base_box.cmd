@@ -44,21 +44,23 @@ powershell -Command Set-ExecutionPolicy Unrestricted
 
 ECHO Update WinRM settings...
 ECHO WinRM quickconfig...
-start /b winrm quickconfig -q
+cmd /C winrm quickconfig -q
 
 ECHO WinRM MaxMemoryPerShell...
-start /b winrm set winrm/config/winrs @{MaxMemoryPerShellMB="512"}
+cmd /C winrm set winrm/config/winrs @{MaxMemoryPerShellMB="512"}
 
 ECHO WinRM MaxTimeoutms...
-start /b winrm set winrm/config @{MaxTimeoutms="1800000"}
+cmd /C winrm set winrm/config @{MaxTimeoutms="1800000"}
 
 ECHO WinRM AllowUnencrypted...
-start /b winrm set winrm/config/service @{AllowUnencrypted="true"}
+cmd /C winrm set winrm/config/service @{AllowUnencrypted="true"}
 
 ECHO WinRM Basic auth...
-start /b winrm set winrm/config/service/auth @{Basic="true"}
+cmd /C winrm set winrm/config/service/auth @{Basic="true"}
 
 ECHO WinRM Service auto start...
 sc config WinRM start= auto
+
+ECHO ...Done!
 
 
