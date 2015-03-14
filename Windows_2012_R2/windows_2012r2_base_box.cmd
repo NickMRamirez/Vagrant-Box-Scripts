@@ -62,6 +62,13 @@ cmd /C winrm set winrm/config/service/auth @{Basic="true"}
 ECHO WinRM Service auto start...
 sc config WinRM start= auto
 
+ECHO Installing Chocolatey
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+
+
+ECHO Installing Cygwin
+choco install cygwin
+
 ECHO ...Done!
 
 
